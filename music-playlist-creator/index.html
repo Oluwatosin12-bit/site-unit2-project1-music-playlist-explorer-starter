@@ -6,17 +6,51 @@
     
     <title>Music Playlist Explorer</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <!-- Your header content here -->
+        <!-- Header content here -->
+        <h1>Music Playlist Explorer</h1>
     </header>
 
-    <main> 
-        <!-- Your main content here -->
-    </main>
+        <!-- Main content here -->   
+    <main>
+
+        <nav>Go home</nav>
+        <nav>Go hard</nav>
+            <!-- Playlist-cards -->
+            <div id="playlist-info" class="playlist-info"></div>
+
+            <!-- Modal -->
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                   
+                   <span class="close" id="modal-close">&times;</span>
+                   <div class="playlist-details">
+                        <img id="modal-img"/> 
+                        <div>
+                            <h2 id="modal-title"></h2>
+                            <p id="modal-description"></p>
+                            <button id = "shuffle" class="shuffle">Shuffle</button>
+                        </div>
+                    </div>
+
+                    <div >
+                        <div>
+                            <img id="modal-image"/>
+                            <div>
+                                <ul id="modal-songs-list"></ul>
+                            </div>
+                        </div>
+                    </div>   
+                   
+               </div>
+            </div>
+
+    </main> 
+
 
     <footer>
         <!-- Your footer content here -->
@@ -25,3 +59,29 @@
     <script src="script.js"></script>
 </body>
 </html>
+
+
+ <!-- Playlist title -->
+ <!-- <div class="playlist-title">
+    <img src="assets/music.jpeg"/>
+    <div class="playlist-details">
+        <h2>Playlist Title</h2>
+        <p>Creator Name</p>
+    </div>
+   </div> -->
+
+   <!-- List of songs -->
+   <!-- <div class="song-title">
+        <div class="song-stuff">
+            <img src="assets/music.jpeg"/>
+            <div class="song-details">
+                <h4>Song Title</h4>
+                <p>Creator Name</p>
+                <p>Album Name</p>
+            </div>
+        </div>
+
+        <div class="timer"> 
+            <span>3:00</span>
+        </div> 
+   </div>     -->
