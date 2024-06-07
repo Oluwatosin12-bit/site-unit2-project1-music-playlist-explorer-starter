@@ -179,3 +179,11 @@ nav a:hover{
     cursor: pointer;
  }
  
+ .playlist-random{
+    display: flex;
+    justify-content: center;
+ }
+
+ .home-songs{
+    margin-left: 50px;
+ }
