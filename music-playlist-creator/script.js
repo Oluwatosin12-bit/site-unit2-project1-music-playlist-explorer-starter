@@ -7,15 +7,19 @@ document.addEventListener("DOMContentLoaded", function() {
     const modalImage = document.getElementById('modal-image');
     const modalDescription = document.getElementById('modal-description');
     const modalSongsList = document.getElementById('modal-songs-list');
-    const shuffleButton = document.getElementById('shuffle')
+    const shuffleButton = document.getElementById('shuffle');
+    const searched = document.getElementById('searchplaylist');
     // const chosenPlaylist = document.getElementById('random-playlist')
     let currentPlaylist = [];
        
     
 
         // handles each playlist cards
+        function renderPlaylists(array) {
+            // if we have previous stuff, clear it
+            playlistsContainer.innerHTML = '';
         if(playlistsContainer) {
-            data.playlists.forEach(data => {
+            array.forEach(data => {
                 const card = document.createElement('div');
                 card.className = 'playlist-card';
                 card.innerHTML = `<img src="${data.playlist_art}"/>
@@ -59,6 +63,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
             });
         }
+    }
+    renderPlaylists(data.playlists);
             
           //random playlist for home page
             if (randomShow) {
@@ -96,6 +102,21 @@ document.addEventListener("DOMContentLoaded", function() {
                 randomShow.appendChild(songsList);
             
             }
+
+        // allows user search playlist(stretch feature)
+        if (searched){
+            searched.addEventListener('input', ()=>{
+                const ask = searched.value.toLowerCase();
+                console.log(ask)
+                const filteredPlaylists = data.playlists.filter(playlist =>
+                    playlist.playlist_name.toLowerCase().includes(ask) || playlist.playlist_creator.toLowerCase().includes(ask)
+                );
+                console.log(filteredPlaylists)
+                renderPlaylists(filteredPlaylists);
+            })
+        }
+        
+
 
     // shuffle songs functions (randomness and button)
     function shuffleList(array) {
