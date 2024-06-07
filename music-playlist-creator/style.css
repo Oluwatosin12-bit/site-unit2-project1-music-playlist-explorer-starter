@@ -4,10 +4,18 @@ body {
     padding: 0;
     background-color:black;
     color:#f8f8f8;
+    line-height: 1.6;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 h1{
     text-align: center;
     font-family: fantasy;
+    margin: 0.67rem 0;
+}
+
+h3{
+    margin: 0.67rem 0;
 }
 
 section {
@@ -129,8 +137,10 @@ nav a:hover{
 }
 
 .song-names{
-    line-height: 0.5rem;
+    line-height: 0.7rem;
     align-content: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .song-img{
@@ -160,11 +170,11 @@ nav a:hover{
     border-radius: 20px;
  }
  .modal p{
-    font-size: 1em;
+    /* font-size: 1em; */
  }
  .modal h2{
     margin-top: 0;
-    font-size: 1.5em;
+    /* font-size: 1.5em; */
  }
  .close {
     color: #aaa;
@@ -187,4 +197,35 @@ nav a:hover{
 
  .home-songs{
     margin-left: 50px;
+ }
+
+ @media (max-width: 700px) {
+    p{
+        font-size: 15px;
+    }
+    h1{
+        font-size: 20px;
+    }
+    h2{
+        font-size: 18px;
+    }
+    h3{
+        font-size: 13px;
+    }
+ }
+
+ @media (max-width: 400px) {
+    p{
+        font-size: 10px;
+    }
+    h1{
+        font-size: 14px;
+    }
+    h2{
+        font-size: 13px;
+    }
+    h3{
+        font-size: 10px;
+        text-wrap: wrap;
+    }
  }
