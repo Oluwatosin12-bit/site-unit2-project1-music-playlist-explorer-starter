@@ -199,6 +199,18 @@ nav a:hover{
     margin-left: 50px;
  }
 
+ footer{
+background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+
+ }
+
  @media (max-width: 700px) {
     p{
         font-size: 15px;
