@@ -167,7 +167,7 @@ section {
     padding: 20px;
     border: 1px solid #888;
     width: 55%; /* Could be more or less, depending on screen size */
-    height: 70%;
+    height: auto;
     border-radius: 20px;
  }
  .modal p{

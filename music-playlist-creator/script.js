@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const modalDescription = document.getElementById('modal-description');
     const modalSongsList = document.getElementById('modal-songs-list');
     const shuffleButton = document.getElementById('shuffle')
+ 
+
+    let currentPlaylist = [];
 
             data.playlists.forEach(data => {
                 const card = document.createElement('div');
@@ -29,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const counter = card.querySelector('.count-display')
                 let count = 0
 
+                // increase like count
                 likeIcon.addEventListener('click', (event) =>{
                     event.stopPropagation();
                     count++
@@ -41,42 +45,51 @@ document.addEventListener("DOMContentLoaded", function() {
                         showModal(data);
                     }
                 })
+
+                // delete playlist
+                const deleteButton = card.querySelector('.delete');
+                deleteButton.addEventListener('click', (event)=>{
+                    event.stopPropagation();
+                    card.remove();
+                })
             });
 
-    // shuffle songs
-    // let currentPlaylist = null;
-    // shuffleIcon.addEventListener('click', () => {
-    //     if (currentPlaylist) {
-    //         shufflePlaylist(currentPlaylist);
-    //     }
-    // });
 
-    // function shufflePlaylist(data){
-    //     data.songs.sort(() => Math.random() - 0.5);
-    //     showModal(data.songs);
-    // }
+    // shuffle songs functions
+    function shuffleList(array) {
+        for (let i = array.length-1; i>0; i--) {
+            const j = Math.floor(Math.random()*(i+1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
 
-    // to delete a playlist
-    // const deletePlaylist = card.querySelector('.delete');
-    // deletePlaylist.addEventListener('click', (event)=>{
-    //     event.stopPropagation();
-    //     card.remove();
-    // });
-
-            
-
-        // handles modal visibility
     function showModal(data) {
         modalTitle.textContent = data.playlist_name;
+        console.log(modalTitle);
         modalDescription.textContent = data.playlist_creator;
+        // console.log(modalDescription);
+        currentPlaylist = data.songs;
+        console.log(currentPlaylist.slice());
+        modalSongs(currentPlaylist);
+        
+        modal.style.display = 'block';
+    }
+
+    shuffleButton.addEventListener('click', () => {
+        const shuffledSongs = shuffleList(currentPlaylist.slice());
+        console.log(shuffledSongs);
+        modalSongs(shuffledSongs);
+    })
+
+        // handles modal visibility
+    function modalSongs(songs) {
         modalSongsList.innerHTML = '';
-        data.songs.forEach(song =>{
+        songs.forEach(song =>{
             const songItem = document.createElement('div');
             songItem.className = 'song-item';
-
             songItem.innerHTML = `
-           
-            
+        
                 <span class="song-details">
                 <div> <img class= "song-img" src="${song.cover_art}"/> </div>
                     <div class="song-names"> 
@@ -85,14 +98,12 @@ document.addEventListener("DOMContentLoaded", function() {
                     </div>
                 </span>
                 <div><p>${song.duration} </p></div>
-      
-            
             
             `;
             modalSongsList.appendChild(songItem);
         });
-        modal.style.display = 'block';
     }
+
 
     // closes modal with x icon
     modalClose.addEventListener('click', () => {
@@ -113,7 +124,4 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 // To-do:
-// -commit Work?
-// delete playlist
-// shuffle
 //home slider
