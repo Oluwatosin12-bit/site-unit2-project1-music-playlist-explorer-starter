@@ -1,27 +1,31 @@
 document.addEventListener("DOMContentLoaded", function() {
     const playlistsContainer = document.getElementById('playlist-info');
+    const randomShow = document.getElementById('playlist-random');
     const modal = document.getElementById('modal');
     const modalClose = document.getElementById('modal-close');
     const modalTitle = document.getElementById('modal-title');
-    // const modalImage = document.getElementById('modal-image');
+    const modalImage = document.getElementById('modal-image');
     const modalDescription = document.getElementById('modal-description');
     const modalSongsList = document.getElementById('modal-songs-list');
     const shuffleButton = document.getElementById('shuffle')
- 
-
+    // const chosenPlaylist = document.getElementById('random-playlist')
     let currentPlaylist = [];
+       
+    
 
+        // handles each playlist cards
+        if(playlistsContainer) {
             data.playlists.forEach(data => {
                 const card = document.createElement('div');
                 card.className = 'playlist-card';
                 card.innerHTML = `<img src="${data.playlist_art}"/>
                 <h3>${data.playlist_name}</h3>
                 <p>${data.playlist_creator}</p>
-                <div class="playlist-action">
-                    <div class="like-count">
-                        <span><i id = "like-icon"  class="fa-solid fa-heart like-icon";></i><span>
+                <div class="playlist-action" style="display:flex">
+                    <span class="like-count">
+                        <i id = "like-icon"  class="fa-solid fa-heart like-icon";></i> 
                         <p class="count-display"> ${data.likeCount}</p>
-                    <div>
+                    </span>
                     <span class="delete" id="delete"><i class="fa-solid fa-trash-can" style="color: #ffffff;"></i></span>
                 </div>`;
                 
@@ -46,16 +50,33 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 })
 
-                // delete playlist
+                // deletes playlist
                 const deleteButton = card.querySelector('.delete');
                 deleteButton.addEventListener('click', (event)=>{
                     event.stopPropagation();
                     card.remove();
                 })
+
             });
+        }
+            
+          //random playlist for home page
+            
+            if (randomShow) {
+                const randomPlaylist = data.playlists[Math.floor(Math.random()*8)];
+                console.log(randomPlaylist)
+                const card = document.createElement('div');
+                card.className = 'playlist-home';
+                card.innerHTML = `<img src="${randomPlaylist.playlist_art}"/>
+                <h3>${randomPlaylist.playlist_name}</h3>
+                <p>${randomPlaylist.playlist_creator}</p>
+                <li>${randomPlaylist.songs}</li>
+               `;
+                console.log(card)
+                randomShow.appendChild(card);
+            }
 
-
-    // shuffle songs functions
+    // shuffle songs functions (randomness and button)
     function shuffleList(array) {
         for (let i = array.length-1; i>0; i--) {
             const j = Math.floor(Math.random()*(i+1));
@@ -64,25 +85,26 @@ document.addEventListener("DOMContentLoaded", function() {
         return array;
     }
 
+    if(playlistsContainer){
+    shuffleButton.addEventListener('click', () => {
+        const shuffledSongs = shuffleList(currentPlaylist.slice());
+        modalSongs(shuffledSongs);
+    })
+    }
+
+    // Modal visibility
     function showModal(data) {
+        modalImage.src = data.playlist_art;
         modalTitle.textContent = data.playlist_name;
-        console.log(modalTitle);
         modalDescription.textContent = data.playlist_creator;
-        // console.log(modalDescription);
         currentPlaylist = data.songs;
-        console.log(currentPlaylist.slice());
         modalSongs(currentPlaylist);
         
         modal.style.display = 'block';
     }
 
-    shuffleButton.addEventListener('click', () => {
-        const shuffledSongs = shuffleList(currentPlaylist.slice());
-        console.log(shuffledSongs);
-        modalSongs(shuffledSongs);
-    })
 
-        // handles modal visibility
+    // handles modal visibility
     function modalSongs(songs) {
         modalSongsList.innerHTML = '';
         songs.forEach(song =>{
@@ -106,9 +128,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     // closes modal with x icon
+    if(playlistsContainer){
     modalClose.addEventListener('click', () => {
         modal.style.display = 'none';
     })
+    }
 
     // closes modal by tapping outside popup box
     window.addEventListener('click', event => {
@@ -125,3 +149,4 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // To-do:
 //home slider
+//put random playlist on home page

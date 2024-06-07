@@ -18,8 +18,21 @@
         <!-- Main content here -->   
     <main>
 
-        <nav>Go home</nav>
-        <nav>Go hard</nav>
+        <!-- <div class="navigation">
+            <nav>
+                <a href="home.html" class="active nav-link">Go home</a>
+                <a href="index.html" class="nav-link">Go hard</a>
+            </nav>
+        </div> -->
+        <div class="navigation">
+            <nav>
+                <a href="featured.html" class="active nav-link" >Go home</a>
+                <a href="index.html" class="active nav-link">Go hard</a>
+            </nav>
+        </div>
+        
+        
+     
             <!-- Playlist-cards -->
             <div id="playlist-info" class="playlist-info"></div>
 
@@ -29,12 +42,12 @@
                    
                    <span class="close" id="modal-close">&times;</span>
                    <div class="playlist-details">
-                        <img id="modal-img"/> 
-                        <div>
+                        <span><img id="modal-img"/></span> 
+                        <span>
                             <h2 id="modal-title"></h2>
                             <p id="modal-description"></p>
                             <button id = "shuffle" class="shuffle"><i class="fa-solid fa-shuffle" style="color: #000000;"></i> Shuffle</button>
-                        </div>
+                        </span>
                     </div>
 
                     <div >
