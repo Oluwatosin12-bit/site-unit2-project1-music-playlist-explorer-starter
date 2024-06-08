@@ -29,9 +29,9 @@ Deployed Application (optional): [Music Playlist Explorer Deployed Site](ADD_LIN
 
 #### STRETCH FEATURES
 
-- [ ] **Add New Playlists**
-  - [ ] Allow users to create new playlists.
-  - [ ] Users can input playlist name, creator, and add multiple songs with details like title, artist, and duration.
+- [X ] **Add New Playlists**
+  - [X ] Allow users to create new playlists.
+  - [ X] Users can input playlist name, creator, and add multiple songs with details like title, artist, and duration.
 
 - [ ] **Edit Existing Playlists**
   - [ ] Enable users to modify the details of existing playlists.
@@ -50,7 +50,7 @@ Deployed Application (optional): [Music Playlist Explorer Deployed Site](ADD_LIN
 
 ### Walkthrough Video
 
-`ADD_EMBEDDED_CODE_HERE`: https://www.loom.com/share/26ff9c71ff574d4385d406bdaaeb02e1?sid=c1557720-0e9d-414e-9aa2-c5e2c6cfcfb0
+`ADD_EMBEDDED_CODE_HERE`: https://www.loom.com/share/7565e8c75ddc41b5a7d1fe239013befc?sid=63c630b4-0a64-4173-9eee-9b4b694dbccb
 
 ### Reflection
 
