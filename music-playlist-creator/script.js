@@ -9,6 +9,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const modalSongsList = document.getElementById('modal-songs-list');
     const shuffleButton = document.getElementById('shuffle');
     const searched = document.getElementById('searchplaylist');
+    const addPlaylistButton = document.getElementById('addPlaylist')
+    const addModal = document.getElementById('addModal');
+    const addModalclose = document.getElementById('addmodal-close');
+    const addPlaylistForm = document.getElementById('playlistForm');
+
     // const chosenPlaylist = document.getElementById('random-playlist')
     let currentPlaylist = [];
        
@@ -103,19 +108,21 @@ document.addEventListener("DOMContentLoaded", function() {
             
             }
 
-        // allows user search playlist(stretch feature)
+        // allows user search playlist
         if (searched){
             searched.addEventListener('input', ()=>{
                 const ask = searched.value.toLowerCase();
-                console.log(ask)
                 const filteredPlaylists = data.playlists.filter(playlist =>
                     playlist.playlist_name.toLowerCase().includes(ask) || playlist.playlist_creator.toLowerCase().includes(ask)
                 );
-                console.log(filteredPlaylists)
                 renderPlaylists(filteredPlaylists);
             })
         }
-        
+
+        //add Playlist
+        addPlaylist.addEventListener('click', ()=>{
+            addModal.push(addPlaylistForm);
+        })
 
 
     // shuffle songs functions (randomness and button)
@@ -168,6 +175,40 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    //handles form modal
+    if (addPlaylistButton){
+        addPlaylistButton.addEventListener('click', ()=>{
+            addModal.style.display = 'block';
+        })
+    }
+
+    if (addModalclose){
+        addModalclose.addEventListener('click', ()=>{
+            addModal.style.display = 'none';
+        })
+    }
+
+    addPlaylistForm.addEventListener('submit', (event)=>{
+        event.preventDefault()
+
+        const playlistname = document.getElementById('playlistName').value;
+        const artistename = document.getElementById('playlistArtiste').value;
+        const imagelink = document.getElementById('playlistImage').value;
+        const playlistsongs = document.getElementById('playlistSongs').value;
+
+        const newPlaylist = {
+            "playlist_name": playlistname,
+            "playlist_creator": artistename,
+            "playlist_art": imagelink,
+            "songs": playlistsongs,
+        };
+
+        data.playlists.push(newPlaylist);
+        renderPlaylists(data.playlists);
+        addModal.style.display = 'none';
+        addPlaylistForm.reset();
+    })
+ 
 
     // closes modal with x icon
     if(playlistsContainer){
@@ -182,6 +223,11 @@ document.addEventListener("DOMContentLoaded", function() {
             modal.style.display = "none";
         }
     }); 
+    window.addEventListener('click', event => {
+        if (event.target == addModal) {
+            addModal.style.display = "none";
+        }
+    }); 
 });
 
     
@@ -190,5 +236,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 // To-do:
-//home slider
-//put random playlist on home page
+//footer
+//search design
+//new video link in readME
+

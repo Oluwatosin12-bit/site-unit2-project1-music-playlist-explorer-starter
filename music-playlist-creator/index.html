@@ -34,7 +34,11 @@
         
      
             <!-- Playlist-cards -->
-            <input type="search" id="searchplaylist" placeholder="Search Playlist">
+            <div class="playlist-actions">
+                <i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i> 
+                <input type="search" id="searchplaylist" placeholder="Search Playlist"/>
+                <button id="addPlaylist">Add Playlist</button>
+            </div>
             <div id="playlist-info" class="playlist-info"></div>
             
 
@@ -63,6 +67,38 @@
                    
                </div>
             </div>
+
+            <div id="addModal">
+                <div class="addForm" id="addForm">
+                    <span class="close" id="addmodal-close">&times;</span>
+                    <h2>Add Playlist</h2>
+                    <form id="playlistForm">
+                        <div class="formfield">
+                            <label>Playlist Name:</label>
+                            <input id="playlistName"/>
+                        </div>
+                        
+                        <div class="formfield">
+                            <label>Artiste:</label>
+                            <input id="playlistArtiste"/>
+                        </div>
+                        
+                        <div class="formfield">
+                            <label>Image URL:</label>
+                            <input id="playlistImage"/>
+                        </div>
+
+                        <div class="formfield">
+                            <label>Songs:</label>
+                            <input id="playlistSongs"/>
+                        </div>
+                        
+                        
+                        <button type="submit">Add</button>
+                    </form>
+                </div>
+            </div>
+            
 
     </main> 
 

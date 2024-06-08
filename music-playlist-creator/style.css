@@ -21,6 +21,33 @@ h3{
 input{
     justify-content: center;
     align-items: center;
+    width: 30%;
+    /* padding: 100px 0 100px 0; */
+    height: 1.3rem;
+
+}
+.formfield{
+    margin: 20px;
+    display: block;
+}
+button:hover{
+    color: black;
+    : white;
+    
+}
+
+.playlist-actions{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    margin: 30px;
+}
+#searchplaylist{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 section {
@@ -30,6 +57,12 @@ section {
     border-radius: 10px;
     flex: 1 1 25%;
     box-sizing: border-box;
+}
+
+button{
+    justify-content: center;
+    display: flex;
+
 }
 
 nav {
@@ -214,6 +247,27 @@ background-color: #777;
    bottom: 0;
    width: 100%;
 
+ }
+
+ #addModal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+ }
+ .addForm {
+    background-color: black;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 55%; /* Could be more or less, depending on screen size */
+    height: auto;
+    border-radius: 20px;
  }
 
  @media (max-width: 1000px) {
